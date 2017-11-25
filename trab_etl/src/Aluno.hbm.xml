@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2017 22:36:11 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<class name="dao.Aluno" table="ALUNOS">
+		<id name="id_nu_insc" type="java.lang.String">
+			<column name="ID_NU_INSC" />
+			<generator class="assigned" />
+		</id>
+		<property name="idade" type="int">
+			<column name="IDADE" />
+
+		</property>
+		<property name="nu_ano" type="java.lang.String">
+			<column name="NU_ANO" />
+		</property>
+		<property name="cod_mun_res" type="int">
+			<column name="COD_MUN_RES" />
+		</property>
+		<property name="nome_mun_res" type="java.lang.String">
+			<column name="NOME_MUN_RES" />
+		</property>
+		<property name="cod_uf_res" type="java.lang.String">
+			<column name="COD_UF_RES" />
+		</property>
+		<property name="uf_res" type="java.lang.String">
+			<column name="UF_RES" />
+		</property>
+		<property name="in_estuda_cl_hosp" type="int">
+			<column name="IN_ESTUDA_CL_HOSP" />
+		</property>
+		<property name="id_sexo" type="java.lang.String">
+			<column name="ID_SEXO" />
+		</property>
+		<property name="id_nacionalidade" type="int" access="field">
+			<column name="ID_NACIONALIDADE" />
+		</property>
+		<property name="cod_mun_nasc" type="int">
+			<column name="COD_MUN_NASC" />
+		</property>
+		<property name="cod_us_nasc" type="java.lang.String">
+			<column name="COD_US_NASC" />
+		</property>
+		<property name="uf_nasc" type="java.lang.String">
+			<column name="UF_NASC" />
+		</property>
+		<property name="id_st_conclusao" type="int">
+			<column name="ID_ST_CONCLUSAO" />
+		</property>
+		<property name="ano_conclusao" type="int">
+			<column name="ANO_CONCLUSAO" />
+		</property>
+		<property name="id_tp_esc" type="int">
+			<column name="ID_TP_ESC" />
+		</property>
+		<property name="id_in_tp_ensino" type="int">
+			<column name="ID_IN_TP_ENSINO" />
+		</property>
+		<property name="id_tp_estado_civil" type="int">
+			<column name="ID_TP_ESTADO_CIVIL" />
+		</property>
+		<property name="id_tp_cor_raca" type="int">
+			<column name="ID_TP_COR_RACA" />
+		</property>
+		<property name="id_cod_esc" type="int">
+			<column name="ID_COD_ESC" />
+		</property>
+	</class>
+</hibernate-mapping>
