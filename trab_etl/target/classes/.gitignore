@@ -1,8 +1,4 @@
-/Aluno.hbm.xml
-/Escolas.hbm.xml
-/config/
+/META-INF/
 /core/
 /dao/
-/hibernate.cfg.xml
-/META-INF/
-/AlunoPK.hbm.xml
+/Aluno.hbm.xml

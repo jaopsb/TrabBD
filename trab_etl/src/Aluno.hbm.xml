@@ -1,70 +1,147 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 24/11/2017 22:36:11 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 25/11/2017 16:04:43 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-	<class name="dao.Aluno" table="ALUNOS">
-		<id name="id_nu_insc" type="java.lang.String">
-			<column name="ID_NU_INSC" />
-			<generator class="assigned" />
-		</id>
-		<property name="idade" type="int">
-			<column name="IDADE" />
-
-		</property>
-		<property name="nu_ano" type="java.lang.String">
-			<column name="NU_ANO" />
-		</property>
-		<property name="cod_mun_res" type="int">
-			<column name="COD_MUN_RES" />
-		</property>
-		<property name="nome_mun_res" type="java.lang.String">
-			<column name="NOME_MUN_RES" />
-		</property>
-		<property name="cod_uf_res" type="java.lang.String">
-			<column name="COD_UF_RES" />
-		</property>
-		<property name="uf_res" type="java.lang.String">
-			<column name="UF_RES" />
-		</property>
-		<property name="in_estuda_cl_hosp" type="int">
-			<column name="IN_ESTUDA_CL_HOSP" />
-		</property>
-		<property name="id_sexo" type="java.lang.String">
-			<column name="ID_SEXO" />
-		</property>
-		<property name="id_nacionalidade" type="int" access="field">
-			<column name="ID_NACIONALIDADE" />
-		</property>
-		<property name="cod_mun_nasc" type="int">
-			<column name="COD_MUN_NASC" />
-		</property>
-		<property name="cod_us_nasc" type="java.lang.String">
-			<column name="COD_US_NASC" />
-		</property>
-		<property name="uf_nasc" type="java.lang.String">
-			<column name="UF_NASC" />
-		</property>
-		<property name="id_st_conclusao" type="int">
-			<column name="ID_ST_CONCLUSAO" />
-		</property>
-		<property name="ano_conclusao" type="int">
-			<column name="ANO_CONCLUSAO" />
-		</property>
-		<property name="id_tp_esc" type="int">
-			<column name="ID_TP_ESC" />
-		</property>
-		<property name="id_in_tp_ensino" type="int">
-			<column name="ID_IN_TP_ENSINO" />
-		</property>
-		<property name="id_tp_estado_civil" type="int">
-			<column name="ID_TP_ESTADO_CIVIL" />
-		</property>
-		<property name="id_tp_cor_raca" type="int">
-			<column name="ID_TP_COR_RACA" />
-		</property>
-		<property name="id_cod_esc" type="int">
-			<column name="ID_COD_ESC" />
-		</property>
-	</class>
+    <class name="dao.Aluno" table="ALUNOS">
+        <id name="id_nu_insc" type="java.lang.String">
+            <column name="ID_NU_INSC" />
+            <generator class="assigned" />
+        </id>
+        <property name="idade" type="int">
+            <column name="IDADE" />
+        </property>
+        <property name="nu_ano" type="java.lang.String">
+            <column name="NU_ANO" />
+        </property>
+        <property name="cod_mun_res" type="int">
+            <column name="COD_MUN_RES" />
+        </property>
+        <property name="nome_mun_res" type="java.lang.String">
+            <column name="NOME_MUN_RES" />
+        </property>
+        <property name="cod_uf_res" type="java.lang.String">
+            <column name="COD_UF_RES" />
+        </property>
+        <property name="uf_res" type="java.lang.String">
+            <column name="UF_RES" />
+        </property>
+        <property name="in_estuda_cl_hosp" type="int">
+            <column name="IN_ESTUDA_CL_HOSP" />
+        </property>
+        <property name="id_sexo" type="java.lang.String">
+            <column name="ID_SEXO" />
+        </property>
+        <property name="id_nacionalidade" type="int">
+            <column name="ID_NACIONALIDADE" />
+        </property>
+        <property name="cod_mun_nasc" type="int">
+            <column name="COD_MUN_NASC" />
+        </property>
+        <property name="cod_us_nasc" type="java.lang.String">
+            <column name="COD_US_NASC" />
+        </property>
+        <property name="uf_nasc" type="java.lang.String">
+            <column name="UF_NASC" />
+        </property>
+        <property name="id_st_conclusao" type="int">
+            <column name="ID_ST_CONCLUSAO" />
+        </property>
+        <property name="ano_conclusao" type="int">
+            <column name="ANO_CONCLUSAO" />
+        </property>
+        <property name="id_tp_esc" type="int">
+            <column name="ID_TP_ESC" />
+        </property>
+        <property name="id_in_tp_ensino" type="int">
+            <column name="ID_IN_TP_ENSINO" />
+        </property>
+        <property name="id_tp_estado_civil" type="int">
+            <column name="ID_TP_ESTADO_CIVIL" />
+        </property>
+        <property name="id_tp_cor_raca" type="int">
+            <column name="ID_TP_COR_RACA" />
+        </property>
+        <property name="id_cod_esc" type="int">
+            <column name="ID_COD_ESC" />
+        </property>
+        <property name="in_baixa_visao" type="int">
+            <column name="IN_BAIXA_VISAO" />
+        </property>
+        <property name="in_cegueira" type="int">
+            <column name="IN_CEGUEIRA" />
+        </property>
+        <property name="in_surdez" type="int">
+            <column name="IN_SURDEZ" />
+        </property>
+        <property name="in_def_auditiva" type="int">
+            <column name="IN_DEF_AUDITIVA" />
+        </property>
+        <property name="in_surdo_cegueira" type="int">
+            <column name="IN_SURDO_CEGUEIRA" />
+        </property>
+        <property name="in_def_fisica" type="int">
+            <column name="IN_DEF_FISICA" />
+        </property>
+        <property name="in_def_mental" type="int">
+            <column name="IN_DEF_MENTAL" />
+        </property>
+        <property name="in_deficit_atencao" type="int">
+            <column name="IN_DEFICIT_ATENCAO" />
+        </property>
+        <property name="in_dislexia" type="int">
+            <column name="IN_DISLEXIA" />
+        </property>
+        <property name="in_gestante" type="int">
+            <column name="IN_GESTANTE" />
+        </property>
+        <property name="in_lactante" type="int">
+            <column name="IN_LACTANTE" />
+        </property>
+        <property name="in_idoso" type="int">
+            <column name="IN_IDOSO" />
+        </property>
+        <property name="in_autismo" type="int">
+            <column name="IN_AUTISMO" />
+        </property>
+        <property name="in_sabatista" type="int">
+            <column name="IN_SABATISTA" />
+        </property>
+        <property name="in_braile" type="int">
+            <column name="IN_BRAILE" />
+        </property>
+        <property name="in_ampliada_24" type="int">
+            <column name="IN_AMPLIADA_24" />
+        </property>
+        <property name="in_ampliada_18" type="int">
+            <column name="IN_AMPLIADA_18" />
+        </property>
+        <property name="in_ledor" type="int">
+            <column name="IN_LEDOR" />
+        </property>
+        <property name="in_acesso" type="int">
+            <column name="IN_ACESSO" />
+        </property>
+        <property name="in_transcricao" type="int">
+            <column name="IN_TRANSCRICAO" />
+        </property>
+        <property name="in_libras" type="int">
+            <column name="IN_LIBRAS" />
+        </property>
+        <property name="in_leitura_labial" type="int">
+            <column name="IN_LEITURA_LABIAL" />
+        </property>
+        <property name="in_mesa_cadeira_rodas" type="int">
+            <column name="IN_MESA_CADEIRA_RODAS" />
+        </property>
+        <property name="in_mesa_cadeira_separada" type="int">
+            <column name="IN_MESA_CADEIRA_SEPARADA" />
+        </property>
+        <property name="in_apoio_perna" type="int">
+            <column name="IN_APOIO_PERNA" />
+        </property>
+        <property name="in_guia_interprete" type="int">
+            <column name="IN_GUIA_INTERPRETE" />
+        </property>
+    </class>
 </hibernate-mapping>

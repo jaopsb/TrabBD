@@ -1,0 +1,10 @@
+CREATE TABLE `bd_enem`.`REDACAO` (
+  `id_nu_insc` VARCHAR(45) NOT NULL,
+  `in_status_redacao` INT NULL,
+  `nu_nota_comp1` DOUBLE NULL,
+  `nu_nota_comp2` DOUBLE NULL,
+  `nu_nota_comp3` DOUBLE NULL,
+  `nu_nota_comp4` DOUBLE NULL,
+  `nu_nota_comp5` DOUBLE NULL,
+  `nu_nota_redacao` DOUBLE NULL,
+  PRIMARY KEY (`id_nu_insc`));

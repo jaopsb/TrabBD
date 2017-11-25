@@ -11,8 +11,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.security.auth.callback.ChoiceCallback;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -23,8 +21,6 @@ import com.opencsv.CSVReader;
 
 import dao.Aluno;
 import dao.Escolas;
-import dao.EscolasDAO;
-import dao.alunoDAO;
 
 public class Teste{
 
@@ -51,8 +47,6 @@ public class Teste{
 
 	/*metodo que le o arquivo csv e insere na tabela*/
 	private static void LoadCSVReader(Connection conexao) {
-		alunoDAO daoAluno  = new alunoDAO();
-		EscolasDAO daoEscola = new EscolasDAO();
 
 		Collection<Aluno> colAluno = new ArrayList<>();
 		Collection<Escolas> colEscola = new ArrayList<>();
@@ -73,30 +67,47 @@ public class Teste{
 			for(String a: header) {
 				System.out.println(a);
 			}*/
-			for(int i = 0; i < 10000;i++) {
+			for(int i = 0; i < 50;i++) {
 				rowData = csvReader.readNext();
 
 				for(int j = 0; j < rowData.length; j++) {
 					if(rowData[j].isEmpty()) {
 						rowData[j] = "-1";
 					}
+					System.out.println(rowData[j]);
 				}
 
+					
+
+				//verifica se a chave (nu_insc) ja existe na lista de chaves
 				if(checaListaAlunos(rowData[0])) {
 					aluno = new Aluno(rowData);
 					colAluno.add(aluno);
 				}
 
+				//verifica se a chave (cod_esc) ja existe na lista de chaves
 				if(checaListaEscola(rowData[7])) {
 					escola = new Escolas(rowData);					
 					colEscola.add(escola);
 				}
+				
+			}
+			
+			int count = 0;
+			
+			//add primeiro as escolas por causa da chave id_cod_esc nos alunos
+			//for para servico batch de envio da colecao de escolas
+			for(Escolas aux: colEscola) {
+				session.saveOrUpdate(aux);
+				if ( ++count % 20 == 0 ) {
+					session.flush();
+					session.clear();
+				}
 			}
 
-			int count = 0;
-
+			//for para servico batch de envio da colecao de alunos
 			for(Aluno aux: colAluno) {
-				session.save(aux);
+				session.saveOrUpdate(aux);
 				if ( ++count % 20 == 0 ) {
 					session.flush();
 					session.clear();
@@ -105,13 +116,6 @@ public class Teste{
 
 			count = 0;
 
-			for(Escolas aux: colEscola) {
-				session.save(aux);
-				if ( ++count % 20 == 0 ) {
-					session.flush();
-					session.clear();
-				}
-			}
 			tx.commit();
 			session.close();
 			csvReader.close();
@@ -121,7 +125,21 @@ public class Teste{
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
-		
+
+	}
+
+	private static boolean isConsolidado(String[] dados) {
+		int x = 0;
+		boolean fim = true;
+
+		while(x < dados.length) {
+			if(dados[x].contains("-1")) {
+				fim = false;
+			}
+			x++;
+		}
+
+		return fim;
 	}
 
 	private static boolean checaListaEscola(String chave) {
@@ -144,24 +162,8 @@ public class Teste{
 
 	}
 
-	private static void insereAL(Aluno aluno) {
-		try {
-			session.save(aluno);
-			session.flush();
-		}catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
-
-	private static void insereEsc(Escolas escola) {
-		try {
-			session.save(escola);				
-			session.flush();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
+	//metodo nao esta sendo usado mais
+	//metodo que insere os alunos usando jdbc
 	private static void insereAluno(String[] dados, Connection conexao) {
 		PreparedStatement stmt;
 

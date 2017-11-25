@@ -1,0 +1,4 @@
+CREATE TABLE `bd_enem`.`TIPO_PROVA` (
+  `id_tp_prova` INT NOT NULL,
+  `desc_tp_prova` VARCHAR(45) NULL,
+  PRIMARY KEY (`id_tp_prova`));

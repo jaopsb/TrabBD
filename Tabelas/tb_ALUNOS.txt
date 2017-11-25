@@ -19,7 +19,20 @@ CREATE TABLE IF NOT EXISTS `bd_enem`.`ALUNOS` (
   `id_tp_estado_civil` INT(4) NULL DEFAULT NULL,
   `id_tp_cor_raca` INT(6) NULL DEFAULT NULL,
   `id_cod_esc` INT(11) NULL DEFAULT NULL,
-  `ALUNOPK` DOUBLE NULL DEFAULT NULL,
+  `in_baixa_visao` INT(11) NULL DEFAULT NULL,
+  `in_cegueira` INT(11) NULL DEFAULT NULL,
+  `in_surdez` INT(11) NULL DEFAULT NULL,
+  `in_def_auditiva` INT(11) NULL DEFAULT NULL,
+  `in_surdo_cegueira` INT(11) NULL DEFAULT NULL,
+  `in_def_mental` INT(11) NULL DEFAULT NULL,
+  `in_def_fisica` INT(11) NULL DEFAULT NULL,
+  `in_deficit_atencao` INT(11) NULL DEFAULT NULL,
+  `in_dislexia` INT(11) NULL DEFAULT NULL,
+  `in_lactante` INT(11) NULL DEFAULT NULL,
+  `in_gestante` INT(11) NULL DEFAULT NULL,
+  `in_idoso` INT(11) NULL DEFAULT NULL,
+  `in_autismo` INT(11) NULL DEFAULT NULL,
+  `in_sabatista` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id_nu_insc`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1
