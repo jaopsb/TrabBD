@@ -1,0 +1,4 @@
+CREATE TABLE `bd_enem`.`TP_COR_RACA` (
+  `id_tp_cor_raca` INT NOT NULL,
+  `desc_tp_cor_raca` VARCHAR(45) NULL,
+  PRIMARY KEY (`id_tp_cor_raca`));

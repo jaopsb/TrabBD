@@ -1,4 +1,11 @@
 
+insert into TP_COR_RACA (id_tp_cor_raca,desc_tp_cor_raca) values(0,"Não declarado");
+insert into TP_COR_RACA (id_tp_cor_raca,desc_tp_cor_raca) values(1,"Branca");
+insert into TP_COR_RACA (id_tp_cor_raca,desc_tp_cor_raca) values(2,"Preta");
+insert into TP_COR_RACA (id_tp_cor_raca,desc_tp_cor_raca) values(3,"Parda");
+insert into TP_COR_RACA (id_tp_cor_raca,desc_tp_cor_raca) values(4,"Amarela");
+insert into TP_COR_RACA (id_tp_cor_raca,desc_tp_cor_raca) values(5,"Indigena");
+
 insert into TP_ESTADO_CIVIL (id_tp_estado_civil,desc_tp_estado_civil) values(0,"Solteiro");
 insert into TP_ESTADO_CIVIL (id_tp_estado_civil,desc_tp_estado_civil) values(1,"Casado mora com companheiro(a)");
 insert into TP_ESTADO_CIVIL (id_tp_estado_civil,desc_tp_estado_civil) values(2,"Divorciado/Desquitado/Separado");
