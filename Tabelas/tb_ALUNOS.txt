@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS `bd_enem`.`ALUNOS` (
+  `id_nu_insc` VARCHAR(45) NOT NULL,
+  `nu_ano` INT(4) NULL DEFAULT NULL,
+  `cod_mun_res` INT(7) NULL DEFAULT NULL,
+  `nome_mun_res` VARCHAR(150) NULL DEFAULT NULL,
+  `cod_uf_res` VARCHAR(45) NULL DEFAULT NULL,
+  `uf_res` VARCHAR(2) NULL DEFAULT NULL,
+  `in_estuda_cl_hosp` INT(1) NULL DEFAULT NULL,
+  `idade` INT(100) NULL DEFAULT NULL,
+  `id_sexo` VARCHAR(2) NULL DEFAULT NULL,
+  `id_nacionalidade` INT(4) NULL DEFAULT NULL,
+  `cod_mun_nasc` INT(7) NULL DEFAULT NULL,
+  `cod_us_nasc` VARCHAR(45) NULL DEFAULT NULL,
+  `uf_nasc` VARCHAR(2) NULL DEFAULT NULL,
+  `id_st_conclusao` INT(4) NULL DEFAULT NULL,
+  `ano_conclusao` INT(11) NULL DEFAULT NULL,
+  `id_tp_esc` INT(2) NULL DEFAULT NULL,
+  `id_in_tp_ensino` INT(4) NULL DEFAULT NULL,
+  `id_tp_estado_civil` INT(4) NULL DEFAULT NULL,
+  `id_tp_cor_raca` INT(6) NULL DEFAULT NULL,
+  `id_cod_esc` INT(11) NULL DEFAULT NULL,
+  `ALUNOPK` DOUBLE NULL DEFAULT NULL,
+  PRIMARY KEY (`id_nu_insc`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1

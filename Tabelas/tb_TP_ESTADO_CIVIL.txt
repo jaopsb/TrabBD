@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS `bd_enem`.`TP_ESTADO_CIVIL` (
+  `id_tp_estado_civil` INT(11) NOT NULL,
+  `desc_tp_estado_civil` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_tp_estado_civil`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1
