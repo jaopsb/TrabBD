@@ -2,3 +2,5 @@
 /core/
 /dao/
 /Aluno.hbm.xml
+/Prova.hbm.xml
+/Redacao.hbm.xml

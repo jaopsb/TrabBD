@@ -15,6 +15,8 @@
 
 		<mapping resource="Aluno.hbm.xml" />
 		<mapping resource="Escolas.hbm.xml" />
+		<mapping resource="Prova.hbm.xml"/>
+		<mapping resource="Redacao.hbm.xml"/>
 
 	</session-factory>
 </hibernate-configuration>

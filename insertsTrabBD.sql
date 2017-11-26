@@ -1,3 +1,14 @@
+insert into STATUS_REDACAO (id_in_status_redacao,desc_in_status_redacao) values(1,"Em branco");
+insert into STATUS_REDACAO (id_in_status_redacao,desc_in_status_redacao) values(2,"Anulada");
+insert into STATUS_REDACAO (id_in_status_redacao,desc_in_status_redacao) values(3,"Fuga ao tema");
+insert into STATUS_REDACAO (id_in_status_redacao,desc_in_status_redacao) values(4,"Não atende ao tipo textual");
+insert into STATUS_REDACAO (id_in_status_redacao,desc_in_status_redacao) values(5,"Texto insuficiente");
+insert into STATUS_REDACAO (id_in_status_redacao,desc_in_status_redacao) values(6,"Ausente");
+insert into STATUS_REDACAO (id_in_status_redacao,desc_in_status_redacao) values(7,"Presente e texto conforme os requisitos");
+insert into STATUS_REDACAO (id_in_status_redacao,desc_in_status_redacao) values(9,"Anulada - Fere Direitos Humanos");
+insert into STATUS_REDACAO (id_in_status_redacao,desc_in_status_redacao) values(10,"Cópia de texto motivador");
+insert into STATUS_REDACAO (id_in_status_redacao,desc_in_status_redacao) values(11,"Parte do texto desconectada com o tema proposto");
+
 insert into TIPO_PROVA (id_tp_prova,desc_tp_prova) values (199,"Azul CN");
 insert into TIPO_PROVA (id_tp_prova,desc_tp_prova) values (200,"Amarelo CN");
 insert into TIPO_PROVA (id_tp_prova,desc_tp_prova) values (201,"Branco CN");
