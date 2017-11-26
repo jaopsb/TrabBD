@@ -1,6 +1,0 @@
-CREATE TABLE IF NOT EXISTS `bd_enem`.`NECESSIDADES_ESPECIAIS` (
-  `id_tp_necessidade` VARCHAR(45) NOT NULL,
-  `desc_tp_necessidade` VARCHAR(120) NULL DEFAULT NULL,
-  PRIMARY KEY (`id_tp_necessidade`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1

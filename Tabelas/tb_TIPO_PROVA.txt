@@ -1,4 +1,6 @@
-CREATE TABLE `bd_enem`.`TIPO_PROVA` (
-  `id_tp_prova` INT NOT NULL,
-  `desc_tp_prova` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_tp_prova`));
+CREATE TABLE IF NOT EXISTS `bd_enem`.`TIPO_PROVA` (
+  `id_tp_prova` INT(11) NOT NULL,
+  `desc_tp_prova` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_tp_prova`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1

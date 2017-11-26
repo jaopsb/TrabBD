@@ -1,6 +1,0 @@
-CREATE TABLE IF NOT EXISTS `bd_enem`.`IN_TP_ENSINO` (
-  `id_in_tp_ensino` INT(11) NOT NULL,
-  `desc_in_tp_ensino` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`id_in_tp_ensino`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1
