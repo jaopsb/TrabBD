@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2017 20:38:59 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="dao.Escolas" table="ESCOLAS">
+        <id name="id_cod_esc" type="int" access="field">
+            <column name="ID_COD_ESC" />
+            <generator class="assigned" />
+        </id>
+        <property name="cod_mun_esc" type="int">
+            <column name="COD_MUN_ESC" />
+        </property>
+        <property name="nome_mun_esc" type="java.lang.String">
+            <column name="NOME_MUN_ESC" />
+        </property>
+        <property name="cod_uf_esc" type="java.lang.String">
+            <column name="COD_UF_ESC" />
+        </property>
+        <property name="uf_esc" type="java.lang.String">
+            <column name="UF_ESC" />
+        </property>
+        <property name="id_dependencia_adm_esc" type="int">
+            <column name="ID_DEPENDENCIA_ADM_ESC" />
+        </property>
+        <property name="id_localizacao_esc" type="int">
+            <column name="ID_LOCALIZACAO_ESC" />
+        </property>
+        <property name="sit_func_esc" type="int">
+            <column name="SIT_FUNC_ESC" />
+        </property>
+    </class>
+</hibernate-mapping>

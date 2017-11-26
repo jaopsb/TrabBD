@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/11/2017 15:33:34 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="dao.AlunoSimples" table="ALUNOSIMPLES">
+        <id name="id_nu_insc" type="java.lang.String">
+            <column name="ID_NU_INSC" />
+            <generator class="assigned" />
+        </id>
+        <property name="id_sexo" type="java.lang.String">
+            <column name="ID_SEXO" />
+        </property>
+        <property name="uf_res" type="java.lang.String">
+            <column name="UF_RES" />
+        </property>
+        <property name="nota_cn" type="double">
+            <column name="NOTA_CN" />
+        </property>
+        <property name="nota_ch" type="double">
+            <column name="NOTA_CH" />
+        </property>
+        <property name="nota_lc" type="double">
+            <column name="NOTA_LC" />
+        </property>
+        <property name="nota_mt" type="double">
+            <column name="NOTA_MT" />
+        </property>
+        <property name="nu_nota_redacao" type="double">
+            <column name="NU_NOTA_REDACAO" />
+        </property>
+    </class>
+</hibernate-mapping>

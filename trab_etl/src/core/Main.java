@@ -24,7 +24,7 @@ import dao.Escolas;
 import dao.Prova;
 import dao.Redacao;
 
-public class Teste{
+public class Main{
 
 	private static SessionFactory factory;
 	private static Session session;
@@ -66,7 +66,6 @@ public class Teste{
 
 			String[] rowData;
 			String[] header = csvReader.readNext();
-
 
 			//apenas captura o header
 			/*

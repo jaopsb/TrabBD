@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/11/2017 12:53:09 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="dao.Redacao" table="REDACAO">
+        <id name="id_nu_insc" type="java.lang.String">
+            <column name="ID_NU_INSC" />
+            <generator class="assigned" />
+        </id>
+        <property name="in_status_redacao" type="int">
+            <column name="IN_STATUS_REDACAO" />
+        </property>
+        <property name="nu_nota_comp1" type="double">
+            <column name="NU_NOTA_COMP1" />
+        </property>
+        <property name="nu_nota_comp2" type="double">
+            <column name="NU_NOTA_COMP2" />
+        </property>
+        <property name="nu_nota_comp3" type="double">
+            <column name="NU_NOTA_COMP3" />
+        </property>
+        <property name="nu_nota_comp4" type="double">
+            <column name="NU_NOTA_COMP4" />
+        </property>
+        <property name="nu_nota_comp5" type="double">
+            <column name="NU_NOTA_COMP5" />
+        </property>
+        <property name="nu_nota_redacao" type="double">
+            <column name="NU_NOTA_REDACAO" />
+        </property>
+    </class>
+</hibernate-mapping>

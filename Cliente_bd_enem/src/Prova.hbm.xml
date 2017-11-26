@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/11/2017 10:01:38 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="dao.Prova" table="PROVA">
+        <id name="id_nu_insc" type="java.lang.String">
+            <column name="ID_NU_INSC" />
+            <generator class="assigned" />
+        </id>
+        <property name="id_prova_ch" type="int">
+            <column name="ID_PROVA_CH" />
+        </property>
+        <property name="cod_mun_prova" type="int">
+            <column name="COD_MUN_PROVA" />
+        </property>
+        <property name="nome_mun_prova" type="java.lang.String">
+            <column name="NOME_MUN_PROVA" />
+        </property>
+        <property name="cod_uf_prova" type="java.lang.String">
+            <column name="COD_UF_PROVA" />
+        </property>
+        <property name="uf_prova" type="java.lang.String">
+            <column name="UF_PROVA" />
+        </property>
+        <property name="in_presenca_cn" type="int">
+            <column name="IN_PRESENCA_CN" />
+        </property>
+        <property name="in_presenca_ch" type="int">
+            <column name="IN_PRESENCA_CH" />
+        </property>
+        <property name="in_presenca_lc" type="int">
+            <column name="IN_PRESENCA_LC" />
+        </property>
+        <property name="in_presenca_mt" type="int">
+            <column name="IN_PRESENCA_MT" />
+        </property>
+        <property name="id_prova_cn" type="int">
+            <column name="ID_PROVA_CN" />
+        </property>
+        <property name="id_prova_lc" type="int">
+            <column name="ID_PROVA_LC" />
+        </property>
+        <property name="id_prova_mt" type="int">
+            <column name="ID_PROVA_MT" />
+        </property>
+        <property name="nota_cn" type="double">
+            <column name="NOTA_CN" />
+        </property>
+        <property name="nota_ch" type="double">
+            <column name="NOTA_CH" />
+        </property>
+        <property name="nota_lc" type="double">
+            <column name="NOTA_LC" />
+        </property>
+        <property name="nota_mt" type="double">
+            <column name="NOTA_MT" />
+        </property>
+        <property name="tx_respostas_cn" type="java.lang.String">
+            <column name="TX_RESPOSTAS_CN" />
+        </property>
+        <property name="tx_respostas_ch" type="java.lang.String">
+            <column name="TX_RESPOSTAS_CH" />
+        </property>
+        <property name="tx_respostas_lc" type="java.lang.String">
+            <column name="TX_RESPOSTAS_LC" />
+        </property>
+        <property name="tx_respostas_mt" type="java.lang.String">
+            <column name="TX_RESPOSTAS_MT" />
+        </property>
+        <property name="tp_lingua" type="int">
+            <column name="TP_LINGUA" />
+        </property>
+    </class>
+</hibernate-mapping>
