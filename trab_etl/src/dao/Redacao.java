@@ -14,6 +14,7 @@ public class Redacao {
 	private double nu_nota_comp2;
 	private double nu_nota_comp3;
 	private double nu_nota_comp4;
+	private double nu_nota_comp5;
 	private double nu_nota_redacao;
 
 	
@@ -24,11 +25,21 @@ public class Redacao {
 		setNu_nota_comp2(Double.parseDouble(dados[85]));
 		setNu_nota_comp3(Double.parseDouble(dados[86]));
 		setNu_nota_comp4(Double.parseDouble(dados[87]));
-		setNu_nota_redacao(Double.parseDouble(dados[88]));
+		setNu_nota_comp5(Double.parseDouble(dados[88]));
+		setNu_nota_redacao(Double.parseDouble(dados[89]));
 
 	}
 
 	
+	
+	public double getNu_nota_comp5() {
+		return nu_nota_comp5;
+	}
+
+	public void setNu_nota_comp5(double nu_nota_comp5) {
+		this.nu_nota_comp5 = nu_nota_comp5;
+	}
+
 	public String getId_nu_insc() {
 		return id_nu_insc;
 	}

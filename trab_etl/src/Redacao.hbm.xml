@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 26/11/2017 10:21:30 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 26/11/2017 12:53:09 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="dao.Redacao" table="REDACAO">
         <id name="id_nu_insc" type="java.lang.String">
@@ -22,6 +22,9 @@
         </property>
         <property name="nu_nota_comp4" type="double">
             <column name="NU_NOTA_COMP4" />
+        </property>
+        <property name="nu_nota_comp5" type="double">
+            <column name="NU_NOTA_COMP5" />
         </property>
         <property name="nu_nota_redacao" type="double">
             <column name="NU_NOTA_REDACAO" />
