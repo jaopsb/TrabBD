@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS `bd_enem`.`NACIONALIDADE` (
+  `id_nacionalidade` INT(11) NOT NULL,
+  `desc_nacionalidade` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_nacionalidade`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1

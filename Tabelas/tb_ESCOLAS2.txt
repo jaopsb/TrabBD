@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS `bd_enem`.`ESCOLAS` (
+  `id_cod_esc` INT(11) NOT NULL,
+  `cod_mun_esc` INT(7) NULL DEFAULT NULL,
+  `nome_mun_esc` VARCHAR(45) NULL DEFAULT NULL,
+  `cod_uf_esc` VARCHAR(45) NULL DEFAULT NULL,
+  `uf_esc` VARCHAR(45) NULL DEFAULT NULL,
+  `id_dependencia_adm_esc` INT(4) NULL DEFAULT NULL,
+  `id_localizacao_esc` INT(2) NULL DEFAULT NULL,
+  `sit_func_esc` INT(4) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_cod_esc`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1

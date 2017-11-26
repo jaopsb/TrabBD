@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS `bd_enem`.`TP_COR_RACA` (
+  `id_tp_cor_raca` INT(11) NOT NULL,
+  `desc_tp_cor_raca` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_tp_cor_raca`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1
