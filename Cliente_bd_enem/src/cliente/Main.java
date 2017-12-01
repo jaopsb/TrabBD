@@ -97,36 +97,66 @@ public class Main {
 	}
 
 	private static void getEstatisticas() {
-
 		String sql_estatisticas_completa = "SELECT COUNT(*)/(SELECT COUNT(*) FROM ALUNOS) * 100,uf_res FROM ALUNOS group by uf_res";
-
+		String sql_estatisticas_por_uf = "SELECT COUNT(*)/(SELECT COUNT(*) FROM ALUNOS) * 100,uf_res FROM ALUNOS where uf_res = ";
+		
+		int opt = 0;
+		Query query;
+		List<Object[]> listaObj;
+		
 		input.nextLine();//limpa buffer
 
-		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		System.out.println("| 1-Ver estatisticas de alunos completa (todos os estados)|");
-		System.out.println("| 2-ver estatistica de alunos por estado                  |");
-		System.out.println("| 3-ver estatisticas por regiões                          |");
-		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		do {
 
-		int opt = input.nextInt();
+			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+			System.out.println("| 1-Ver estatisticas de alunos completa (todos os estados)|");
+			System.out.println("| 2-ver estatistica de alunos por estado                  |");
+			System.out.println("| 3-ver estatisticas por regiões                          |");
+			System.out.println("| 4-voltar ao menu inicial                                |");
+			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
-		switch(opt) {
-		case 1:
-			Query query = session.createNativeQuery(sql_estatisticas_completa);
+			opt = input.nextInt();
 
-			List<Object[]> listaObj = query.getResultList();
+			switch(opt) {
+			case 1:
+				query = session.createNativeQuery(sql_estatisticas_completa);
+
+				listaObj = query.getResultList();
 
 
-			for(Object[] obj : listaObj) {
-				System.out.println(obj[0] + "-" + obj[1]);
+				for(Object[] obj : listaObj) {
+					System.out.println(obj[0] + "% dos alunos do banco são do estado de " + obj[1]);
 
+				}
+
+				break;
+
+			case 2:
+				input.nextLine();//limpa buffer
+
+				System.out.println("Digite o estado:");
+				String estado = input.nextLine();
+
+				estado = estado.toUpperCase();
+				
+				query = session.createNativeQuery(sql_estatisticas_por_uf + "\"" + estado + "\"");
+				
+				
+				listaObj = query.getResultList();
+				
+				if(listaObj != null && !listaObj.isEmpty()) {
+					Object[] aux = listaObj.get(0);
+					
+					System.out.println(aux[0] + "% dos alunos do banco sao do estado " + aux[1] );
+				}
+
+
+break;
 			}
-			break;
-
-		}
 
 
 
+		}while(opt != 4);
 	}
 
 	private static void delAluno() {
