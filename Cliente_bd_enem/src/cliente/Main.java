@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
@@ -14,11 +15,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 
 import dao.Aluno;
 import dao.AlunoSimples;
 import dao.Escolas;
+import dao.Estatistica;
 import dao.Prova;
 import dao.Redacao;
 
@@ -54,7 +57,7 @@ public class Main {
 					+ "|  2-Consultar um nº determinado de alunos (ALUNOS_SIMPLES) |\n"
 					+ "|  3-Pesquisar um aluno por numero de inscrição             |\n"
 					+ "|  4-Apagar um aluno                                        |\n"
-					+ "|  5-ver estatisticas                                       |\n"
+					+ "|  5-Ver estatisticas                                       |\n"
 					+ "|  6-Sair                                                   |\n"
 					+ "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 					);
@@ -94,10 +97,38 @@ public class Main {
 	}
 
 	private static void getEstatisticas() {
-		
+
+		String sql_estatisticas_completa = "SELECT COUNT(*)/(SELECT COUNT(*) FROM ALUNOS) * 100,uf_res FROM ALUNOS group by uf_res";
+
+		input.nextLine();//limpa buffer
+
+		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println("| 1-Ver estatisticas de alunos completa (todos os estados)|");
+		System.out.println("| 2-ver estatistica de alunos por estado                  |");
+		System.out.println("| 3-ver estatisticas por regiões                          |");
+		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+		int opt = input.nextInt();
+
+		switch(opt) {
+		case 1:
+			Query query = session.createNativeQuery(sql_estatisticas_completa);
+
+			List<Object[]> listaObj = query.getResultList();
+
+
+			for(Object[] obj : listaObj) {
+				System.out.println(obj[0] + "-" + obj[1]);
+
+			}
+			break;
+
+		}
+
+
+
 	}
-	
-	
+
 	private static void delAluno() {
 		input.nextLine();//limpa buffer
 		System.out.println("Digite o numero da inscricao do aluno que será apagado:");
@@ -167,7 +198,7 @@ public class Main {
 					System.out.println("Matricula: "
 							+ aux.getId_nu_insc() 
 							+ " sexo: " + aux.getId_sexo() 
-							+ " us_res: " + aux.getUf_res() 
+							+ " uf_res: " + aux.getUf_res() 
 							+ " uf_prova: " + aux.getUf_prova()
 							+ " nota_cn: " + aux.getNota_cn()
 							+ " nota_ch: " + aux.getNota_ch() 
@@ -194,7 +225,7 @@ public class Main {
 				System.out.println("Matricula: "
 						+ aux.getId_nu_insc() 
 						+ " sexo: " + aux.getId_sexo() 
-						+ " us_res: " + aux.getUf_res() 
+						+ " uf_res: " + aux.getUf_res() 
 						+ " uf_prova: " + aux.getUf_prova()
 						+ " nota_cn: " + aux.getNota_cn()
 						+ " nota_ch: " + aux.getNota_ch() 

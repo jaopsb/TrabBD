@@ -14,6 +14,9 @@
         <property name="uf_res" type="java.lang.String">
             <column name="UF_RES" />
         </property>
+        <property name="uf_prova" type="java.lang.String">
+        	<column name="UF_PROVA"/>
+        </property>
         <property name="nota_cn" type="double">
             <column name="NOTA_CN" />
         </property>

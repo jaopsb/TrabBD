@@ -72,7 +72,7 @@ public class Main{
 			for(String a: header) {
 				System.out.println(a);
 			}*/
-			for(int i = 0; i < 10000;i++) {
+			for(int i = 0; i < 100000;i++) {
 				rowData = csvReader.readNext();
 
 				for(int j = 0; j < rowData.length; j++) {
@@ -100,7 +100,7 @@ public class Main{
 					escola = new Escolas(rowData);					
 					colEscola.add(escola);
 				}
-
+				System.out.println(i);
 			}
 
 			int count = 0;
