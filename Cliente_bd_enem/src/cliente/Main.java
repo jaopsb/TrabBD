@@ -1,10 +1,10 @@
 package cliente;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
@@ -15,13 +15,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 
 import dao.Aluno;
 import dao.AlunoSimples;
 import dao.Escolas;
-import dao.Estatistica;
 import dao.Prova;
 import dao.Redacao;
 
@@ -95,15 +93,34 @@ public class Main {
 
 		return retorno;
 	}
+	
+	private static boolean hasRegiao(String regiao,String[] lista) {
+		boolean retorno = false;
+		for(String aux : lista) {
+			if(aux.equals(regiao)) {
+				retorno = true;
+			}
+		}
+		return retorno;
+	}
 
 	private static void getEstatisticas() {
 		String sql_estatisticas_completa = "SELECT COUNT(*)/(SELECT COUNT(*) FROM ALUNOS) * 100,uf_res FROM ALUNOS group by uf_res";
 		String sql_estatisticas_por_uf = "SELECT COUNT(*)/(SELECT COUNT(*) FROM ALUNOS) * 100,uf_res FROM ALUNOS where uf_res = ";
-		
+		String sql_estatisticas_por_regiao = "SELECT COUNT(*)/(SELECT COUNT(*) FROM ALUNOS) * 100 FROM ALUNOS WHERE uf_res in ";
+
+		String norte = "(\"AC\",\"AM\",\"RR\",\"RO\",\"AP\",\"PA\",\"TO\")";
+		String nordeste = "(\"MA\",\"PI\",\"BA\",\"CE\",\"RN\",\"PB\",\"PE\",\"AL\",\"SE\")";
+		String centro_oeste = "(\"MT\",\"GO\",\"DF\",\"MS\")";
+		String sudeste = "(\"SP\",\"RJ\",\"MG\",\"ES\")";
+		String sul = "(\"PR\",\"RS\",\"SC\")";
+
+		String[] regioes = {"AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"};
+
 		int opt = 0;
 		Query query;
 		List<Object[]> listaObj;
-		
+
 		input.nextLine();//limpa buffer
 
 		do {
@@ -112,7 +129,7 @@ public class Main {
 			System.out.println("| 1-Ver estatisticas de alunos completa (todos os estados)|");
 			System.out.println("| 2-ver estatistica de alunos por estado                  |");
 			System.out.println("| 3-ver estatisticas por regiões                          |");
-			System.out.println("| 4-voltar ao menu inicial                                |");
+			System.out.println("| 5-voltar ao menu inicial                                |");
 			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
 			opt = input.nextInt();
@@ -133,30 +150,125 @@ public class Main {
 
 			case 2:
 				input.nextLine();//limpa buffer
-
+				
 				System.out.println("Digite o estado:");
 				String estado = input.nextLine();
 
 				estado = estado.toUpperCase();
-				
-				query = session.createNativeQuery(sql_estatisticas_por_uf + "\"" + estado + "\"");
-				
-				
-				listaObj = query.getResultList();
-				
-				if(listaObj != null && !listaObj.isEmpty()) {
-					Object[] aux = listaObj.get(0);
+
+				if(hasRegiao(estado,regioes)) {
+
+					query = session.createNativeQuery(sql_estatisticas_por_uf + "\"" + estado + "\"");
+
+					listaObj = query.getResultList();
+
+					if(listaObj != null && !listaObj.isEmpty()) {
+						Object[] aux = listaObj.get(0);
+
+						System.out.println(aux[0] + "% dos alunos do banco sao do estado " + aux[1] );
+					}
 					
-					System.out.println(aux[0] + "% dos alunos do banco sao do estado " + aux[1] );
+				}else {
+					System.out.println("Estado inválido!");
+				}
+				
+				break;
+			case 3:
+				input.nextLine();//limpa buffer
+
+				System.out.println("Ver todas as regioes ou procurar uma regiao especifica?\n1-Todas\n2-Escolher Região");
+				int tipoPesquisa = input.nextInt();
+
+				switch(tipoPesquisa) {
+				case 1:
+					BigDecimal[] listaRegioes = new BigDecimal[5];
+
+					query = session.createNativeQuery(sql_estatisticas_por_regiao + norte);
+					listaRegioes[0] = (BigDecimal) query.uniqueResult();
+
+					query = session.createNativeQuery(sql_estatisticas_por_regiao + nordeste);
+					listaRegioes[1] = (BigDecimal) query.uniqueResult();
+
+					query = session.createNativeQuery(sql_estatisticas_por_regiao + centro_oeste);
+					listaRegioes[2] = (BigDecimal) query.uniqueResult();
+
+					query = session.createNativeQuery(sql_estatisticas_por_regiao + sudeste);
+					listaRegioes[3] = (BigDecimal) query.uniqueResult();
+
+					query = session.createNativeQuery(sql_estatisticas_por_regiao + sul);
+					listaRegioes[4] = (BigDecimal) query.uniqueResult();
+
+
+					System.out.println();
+					System.out.println(listaRegioes[0].toString() + "% dos registros do banco são da regiao Norte");
+					System.out.println(listaRegioes[1].toString() + "% dos registros do banco são da regiao Nordeste");
+					System.out.println(listaRegioes[2].toString() + "% dos registros do banco são da regiao Centro-Oeste");
+					System.out.println(listaRegioes[3].toString() + "% dos registros do banco são da regiao Sudeste");
+					System.out.println(listaRegioes[4].toString() + "% dos registros do banco são da regiao Sul");
+					System.out.println();
+
+					break;
+
+				case 2:
+					input.nextLine();//limpa buffer
+					int regiao;
+
+					do {
+						System.out.println("+++++++++++++++++++++++++++++++++++++");
+						System.out.println("| 1-Norte                           |");
+						System.out.println("| 2-Nordeste                        |");
+						System.out.println("| 3-Centro-Oeste                    |");
+						System.out.println("| 4-Sudeste                         |");
+						System.out.println("| 5-Sul                             |");
+						System.out.println("| 6-Voltar                          |");
+						System.out.println("+++++++++++++++++++++++++++++++++++++");
+
+						regiao = input.nextInt();
+						BigDecimal pcrRegiao;
+
+						switch(regiao) {
+						case 1:
+							query = session.createNativeQuery(sql_estatisticas_por_regiao + norte);
+							pcrRegiao = (BigDecimal) query.uniqueResult();
+
+							System.out.println(pcrRegiao.toString() + "% dos registros do banco são da regiao Norte");
+							break;
+						case 2:
+							query = session.createNativeQuery(sql_estatisticas_por_regiao + nordeste);
+							pcrRegiao = (BigDecimal) query.uniqueResult();
+
+							System.out.println(pcrRegiao.toString() + "% dos registros do banco são da regiao Nordeste");
+
+							break;
+						case 3:
+							query = session.createNativeQuery(sql_estatisticas_por_regiao + centro_oeste);
+							pcrRegiao = (BigDecimal) query.uniqueResult();
+
+							System.out.println(pcrRegiao.toString() + "% dos registros do banco são da regiao Centro-Oeste");
+
+							break;
+						case 4:
+							query = session.createNativeQuery(sql_estatisticas_por_regiao + sudeste);
+							pcrRegiao = (BigDecimal) query.uniqueResult();
+
+							System.out.println(pcrRegiao.toString() + "% dos registros do banco são da regiao Sudeste");
+
+							break;
+						case 5:
+							query = session.createNativeQuery(sql_estatisticas_por_regiao + sul);
+							pcrRegiao = (BigDecimal) query.uniqueResult();
+
+							System.out.println(pcrRegiao.toString() + "% dos registros do banco são da regiao Sul");
+
+							break;
+						}
+					}while(regiao != 6);
+					break;
 				}
 
-
-break;
+				break;
 			}
-
-
-
-		}while(opt != 4);
+		}while(opt != 5);
 	}
 
 	private static void delAluno() {
@@ -197,7 +309,6 @@ break;
 	}
 
 	private static void get_AS(int opt){
-		clearConsole();
 
 		Query query;
 		String sql = "Select * from ALUNOS_SIMPLES";
@@ -274,19 +385,25 @@ break;
 	public static void getAluno() {
 		input.nextLine();
 
-		System.out.println("Digite o numero de inscricao do estudante:");
-		String resposta = input.nextLine();
+		try {
 
-		//session.createCriteria(persistentClass)("select * from ALUNOS where id_nu_insc = \'" + resposta + "\'").list();
 
-		Criteria crit = session.createCriteria(Aluno.class);
-		crit.add(Restrictions.eq("id_nu_insc",resposta));
-		List results = crit.list();  
+			System.out.println("Digite o numero de inscricao do estudante:");
+			String resposta = input.nextLine();
 
-		Aluno aluno = (Aluno) results.get(0);
+			//session.createCriteria(persistentClass)("select * from ALUNOS where id_nu_insc = \'" + resposta + "\'").list();
 
-		System.out.println(aluno.toString());
-		input.nextLine();
+			Criteria crit = session.createCriteria(Aluno.class);
+			crit.add(Restrictions.eq("id_nu_insc",resposta));
+			List results = crit.list();  
+
+			Aluno aluno = (Aluno) results.get(0);
+
+			System.out.println(aluno.toString());
+			input.nextLine();
+		}catch(Exception e) {
+			System.out.println("Não foi encontrado o aluno, verifique o número informado");
+		}
 
 	}
 
