@@ -72,7 +72,7 @@ public class Main{
 			for(String a: header) {
 				System.out.println(a);
 			}*/
-			for(int i = 0; i < 100;i++) {
+			for(int i = 0; i < 1000;i++) {
 				rowData = csvReader.readNext();
 
 				for(int j = 0; j < rowData.length; j++) {
